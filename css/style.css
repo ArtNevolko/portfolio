@@ -22,6 +22,13 @@ body {
 	top: 0;
 }
 
+.btn {
+	background: #8d8d8d;
+	padding: 10px;
+	text-decoration: none;
+	border-radius: 25px;
+}
+
 .nav {
 	position: absolute;
 	width: 100%;
@@ -41,13 +48,13 @@ body {
 
 .nav ul li a {
 	text-decoration: none;
-	color: rgb(255, 226, 3);
+	color: rgb(255, 255, 255);
 	font-size: 20px;
 	font-weight: 500;
 }
 
 .nav ul li a:hover {
-	color: rgb(255, 255, 255);
+	color: rgb(255, 230, 0);
 }
 
 .socials {
@@ -68,17 +75,13 @@ aside {
 	position: absolute;
 	width: 370px;
 	height: 100%;
-	/* left: 40px;
-	top: 40px; */
 	background: rgb(30, 41, 57);
 }
 
 /* Image aside */
 aside img {
-	/* photo */
 	position: absolute;
 	width: 100%;
-	/* height: 354px; */
 	top: 40px;
 }
 
@@ -109,6 +112,12 @@ aside img {
 	color: rgb(255, 255, 255);
 }
 
+.phone>a,
+.email>a {
+	text-decoration: none;
+	color: rgb(255, 255, 255);
+}
+
 /* Skills aside */
 .skills {
 	display: flex;
@@ -127,7 +136,7 @@ aside img {
 
 /* about */
 
-.about {
+#about {
 	position: absolute;
 	width: 400px;
 	height: 230px;
@@ -139,7 +148,7 @@ aside img {
 
 /* Projects */
 
-.projects {
+#projects {
 	position: absolute;
 	width: 485px;
 	height: 107px;
@@ -168,12 +177,28 @@ aside img {
 
 /* Experience */
 
-.experience {
+#experience {
 	position: absolute;
 	width: 525px;
 	height: 126px;
 	left: 498px;
 	right: 257px;
-	top: 950px;
-	bottom: 304px;
+	top: 900px;
+}
+
+/* Footer */
+
+footer {
+	display: flex;
+	position: absolute;
+	width: 100%;
+	height: 80px;
+	bottom: 0;
+	flex-direction: column;
+	color: rgb(255, 255, 255);
+	background: rgb(30, 41, 57);
+	box-shadow: 0px -10px 10px rgba(0, 0, 0, 0.1);
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
 }
