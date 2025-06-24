@@ -118,6 +118,12 @@ aside img {
 	color: rgb(255, 255, 255);
 }
 
+.phone>a:hover,
+.email>a:hover {
+	text-decoration: none;
+	color: rgb(255, 230, 0);
+}
+
 /* Skills aside */
 .skills {
 	display: flex;
