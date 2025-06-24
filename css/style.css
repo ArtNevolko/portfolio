@@ -202,3 +202,9 @@ footer {
 	align-items: center;
 	flex-wrap: wrap;
 }
+
+.footer__socials a {
+	text-decoration: none;
+	color: rgb(255, 255, 255);
+	margin-left: 20px;
+}
