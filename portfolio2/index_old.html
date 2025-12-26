@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Designer | Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <div class="nav__logo">NEVOLKO.</div>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="ru">RU</button>
+                <button class="lang-btn" data-lang="ua">UA</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+        </nav>
+
+        <header class="hero">
+            <h1 class="hero__title">
+                <div data-i18n="hero.title.line1">Визуальный</div>
+                <span data-i18n="hero.title.line2">Опыт & Дизайн</span>
+            </h1>
+            <p class="hero__subtitle" data-i18n="hero.subtitle">Помогаю брендам выделяться с помощью смелых решений и продуманного UX/UI дизайна.</p>
+        </header>
+
+        <section class="gallery">
+            <div class="project-item">
+                <div class="project-item__image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80" alt="Fashion" class="project-item__image">
+                </div>
+                <div class="project-item__info">
+                    <h3 class="project-item__title" data-i18n="project1.title">Monochrome</h3>
+                    <span class="project-item__category" data-i18n="project1.cat">Брендинг</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-item__image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=800&q=80" alt="Architecture" class="project-item__image">
+                </div>
+                <div class="project-item__info">
+                    <h3 class="project-item__title" data-i18n="project2.title">Urban Arch</h3>
+                    <span class="project-item__category" data-i18n="project2.cat">Архитектура</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-item__image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="Tech" class="project-item__image">
+                </div>
+                <div class="project-item__info">
+                    <h3 class="project-item__title" data-i18n="project3.title">Neon Future</h3>
+                    <span class="project-item__category" data-i18n="project3.cat">Арт-дирекшн</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-item__image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=800&q=80" alt="Photography" class="project-item__image">
+                </div>
+                <div class="project-item__info">
+                    <h3 class="project-item__title" data-i18n="project4.title">Silence</h3>
+                    <span class="project-item__category" data-i18n="project4.cat">Фотография</span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <a href="mailto:hello@nevolko.com" class="footer__contact" data-i18n="footer.contact">Связаться со мной</a>
+            <p class="footer__copy">&copy; 2025 <span data-i18n="footer.copy">Nevolko. Все права защищены.</span></p>
+        </footer>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

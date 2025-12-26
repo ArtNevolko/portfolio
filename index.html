@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artem Nevolko | Portfolio Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background: #050505;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        p {
+            color: #888;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 30px;
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #fff;
+            background: #1a1a1a;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            margin-bottom: 15px;
+            display: block;
+        }
+        .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+            transition: color 0.3s;
+        }
+        .desc {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Цветовые акценты при наведении */
+        .card-1:hover .title { color: #38bdf8; } /* Голубой */
+        .card-2:hover .title { color: #eab308; } /* Золотой */
+        .card-3:hover .title { color: #00f3ff; } /* Неон */
+    </style>
+</head>
+<body>
+    <h1>Artem Nevolko</h1>
+    <p>Выберите версию портфолио:</p>
+
+    <div class="grid">
+        <!-- Ссылка на Portfolio 1 -->
+        <a href="portfolio1/index.html" class="card card-1" target="_blank">
+            <span class="tag">Для IT & Startups</span>
+            <span class="title">Modern Tech</span>
+            <span class="desc">Строгий стиль, акцент на функционал и технологии. Идеально для SaaS и корпоративных систем.</span>
+        </a>
+
+        <!-- Ссылка на Portfolio 2 -->
+        <a href="portfolio2/index.html" class="card card-2" target="_blank">
+            <span class="tag">Для Design & Brands</span>
+            <span class="title">Creative Agency</span>
+            <span class="desc">Премиальный минимализм, сложная типографика и микро-анимации. Для тех, кому важен стиль.</span>
+        </a>
+
+        <!-- Ссылка на Portfolio 3 -->
+        <a href="portfolio3/index.html" class="card card-3" target="_blank">
+            <span class="tag">Для Web3 & Crypto</span>
+            <span class="title">Immersive 3D</span>
+            <span class="desc">WebGL графика, частицы и вау-эффекты. Для проектов, которые хотят выделиться.</span>
+        </a>
+    </div>
+</body>
+</html>
