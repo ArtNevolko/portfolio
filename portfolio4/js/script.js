@@ -321,6 +321,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentLang === 'ua') alertText = 'Дякуємо! Ми підібрали для вас 3 об\'єкти. Менеджер зв\'яжеться з вами найближчим часом.';
 
             alert(alertText);
+            btn.innerText = originalText;
+            quizForm.reset();
+            currentStep = 1;
+            updateStep(1);
+        }, 2000);
     });
 
 
