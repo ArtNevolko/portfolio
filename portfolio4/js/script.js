@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn_submit: "Получить подборку",
             footer_privacy: "Политика конфиденциальности",
             footer_terms: "Условия использования",
-            footer_copy: "© 2025 Dubai Estate. All rights reserved."
+            footer_copy: "© 2025 Nevolko Estate. All rights reserved."
         },
         en: {
             nav_properties: "Properties",
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn_submit: "Get Selection",
             footer_privacy: "Privacy Policy",
             footer_terms: "Terms of Use",
-            footer_copy: "© 2025 Dubai Estate. All rights reserved."
+            footer_copy: "© 2025 Nevolko Estate. All rights reserved."
         },
         ua: {
             nav_properties: "Об'єкти",
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn_submit: "Отримати підбірку",
             footer_privacy: "Політика конфіденційності",
             footer_terms: "Умови використання",
-            footer_copy: "© 2025 Dubai Estate. Всі права захищені."
+            footer_copy: "© 2025 Nevolko Estate. Всі права захищені."
         }
     };
 
