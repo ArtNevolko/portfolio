@@ -1,5 +1,154 @@
 document.addEventListener('DOMContentLoaded', () => {
     
+    // --- Translations ---
+    const translations = {
+        ru: {
+            nav_properties: "Объекты",
+            nav_mortgage: "Ипотека",
+            nav_quiz: "Подбор",
+            nav_contact: "Связаться",
+            hero_title: "Инвестиции в будущее",
+            hero_subtitle: "Премиальная недвижимость в Дубае с доходностью от 8% годовых",
+            hero_btn_quiz: "Подобрать объект",
+            hero_btn_catalog: "Смотреть каталог",
+            stat_tax: "Налог на доходы",
+            stat_ownership: "Право собственности",
+            stat_visa: "Visa для инвесторов",
+            stat_roi: "Средняя доходность",
+            prop_title: "Избранные проекты",
+            price_from_450: "от $450,000",
+            price_from_890: "от $890,000",
+            price_from_320: "от $320,000",
+            bed_1: "1 спальня",
+            bed_2: "2 спальни",
+            bed_3: "3 спальни",
+            btn_details: "Подробнее",
+            calc_title: "Ипотечный калькулятор",
+            calc_desc: "Рассчитайте примерный ежемесячный платеж для вашей инвестиции.",
+            calc_price: "Стоимость недвижимости ($)",
+            calc_down_payment: "Первоначальный взнос (%)",
+            calc_term: "Срок (лет)",
+            calc_rate: "Процентная ставка (%)",
+            calc_monthly: "Ежемесячный платеж",
+            calc_loan_amount: "Сумма кредита:",
+            calc_down_amount: "Первоначальный взнос:",
+            calc_btn_approve: "Получить одобрение",
+            quiz_title: "Подберите идеальный объект",
+            quiz_step1_title: "Какова цель покупки?",
+            quiz_goal_invest: "Инвестиции (сдача)",
+            quiz_goal_living: "Для жизни",
+            quiz_goal_resale: "Перепродажа",
+            btn_next: "Далее",
+            quiz_step2_title: "Какой бюджет вы рассматриваете?",
+            quiz_budget_low: "до $300k",
+            quiz_budget_mid: "$300k - $700k",
+            quiz_budget_high: "от $700k",
+            btn_prev: "Назад",
+            quiz_step3_title: "Оставьте контакты для получения подборки",
+            ph_name: "Ваше имя",
+            ph_phone: "Телефон / WhatsApp",
+            btn_submit: "Получить подборку",
+            footer_privacy: "Политика конфиденциальности",
+            footer_terms: "Условия использования",
+            footer_copy: "© 2025 Dubai Estate. All rights reserved."
+        },
+        en: {
+            nav_properties: "Properties",
+            nav_mortgage: "Mortgage",
+            nav_quiz: "Selection",
+            nav_contact: "Contact",
+            hero_title: "Invest in Future",
+            hero_subtitle: "Premium real estate in Dubai with 8% annual ROI",
+            hero_btn_quiz: "Find Property",
+            hero_btn_catalog: "View Catalog",
+            stat_tax: "Income Tax",
+            stat_ownership: "Ownership",
+            stat_visa: "Investor Visa",
+            stat_roi: "Average ROI",
+            prop_title: "Featured Projects",
+            price_from_450: "from $450,000",
+            price_from_890: "from $890,000",
+            price_from_320: "from $320,000",
+            bed_1: "1 Bedroom",
+            bed_2: "2 Bedrooms",
+            bed_3: "3 Bedrooms",
+            btn_details: "Details",
+            calc_title: "Mortgage Calculator",
+            calc_desc: "Calculate estimated monthly payment for your investment.",
+            calc_price: "Property Price ($)",
+            calc_down_payment: "Down Payment (%)",
+            calc_term: "Term (Years)",
+            calc_rate: "Interest Rate (%)",
+            calc_monthly: "Monthly Payment",
+            calc_loan_amount: "Loan Amount:",
+            calc_down_amount: "Down Payment:",
+            calc_btn_approve: "Get Pre-Approval",
+            quiz_title: "Find Your Ideal Property",
+            quiz_step1_title: "What is your goal?",
+            quiz_goal_invest: "Investment (Rental)",
+            quiz_goal_living: "Living",
+            quiz_goal_resale: "Resale",
+            btn_next: "Next",
+            quiz_step2_title: "What is your budget?",
+            quiz_budget_low: "up to $300k",
+            quiz_budget_mid: "$300k - $700k",
+            quiz_budget_high: "from $700k",
+            btn_prev: "Back",
+            quiz_step3_title: "Leave contacts to get selection",
+            ph_name: "Your Name",
+            ph_phone: "Phone / WhatsApp",
+            btn_submit: "Get Selection",
+            footer_privacy: "Privacy Policy",
+            footer_terms: "Terms of Use",
+            footer_copy: "© 2025 Dubai Estate. All rights reserved."
+        }
+    };
+
+    const langBtns = document.querySelectorAll('.lang-btn');
+    let currentLang = 'ru';
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        
+        // Update Buttons
+        langBtns.forEach(btn => {
+            if (btn.dataset.lang === lang) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        // Update Text Content
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.dataset.i18n;
+            if (translations[lang][key]) {
+                if (el.tagName !== 'INPUT' && el.tagName !== 'TEXTAREA') {
+                    if (el.classList.contains('btn-text')) {
+                        el.innerHTML = `${translations[lang][key]} <i class="fas fa-arrow-right"></i>`;
+                    } else {
+                        el.textContent = translations[lang][key];
+                    }
+                }
+            }
+        });
+
+        // Update Placeholders
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.dataset.i18nPlaceholder;
+            if (translations[lang][key]) {
+                el.placeholder = translations[lang][key];
+            }
+        });
+    }
+
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            setLanguage(btn.dataset.lang);
+        });
+    });
+
+
     // --- Mortgage Calculator ---
     const priceInput = document.getElementById('prop-price');
     const downPaymentInput = document.getElementById('down-payment');
@@ -10,6 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const monthlyPaymentDisplay = document.getElementById('monthly-payment');
     const loanAmountDisplay = document.getElementById('loan-amount');
     const downPaymentAmountDisplay = document.getElementById('down-payment-amount');
+    const btnGetApproval = document.getElementById('btn-get-approval');
 
     function calculateMortgage() {
         const price = parseFloat(priceInput.value);
@@ -52,6 +202,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial Calculation
     calculateMortgage();
+
+    // Calculator CTA
+    if (btnGetApproval) {
+        btnGetApproval.addEventListener('click', () => {
+            document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+        });
+    }
 
 
     // --- Quiz Logic ---
@@ -102,10 +259,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn = quizForm.querySelector('button[type="submit"]');
         const originalText = btn.innerText;
         
-        btn.innerText = 'Отправка...';
+        btn.innerText = currentLang === 'ru' ? 'Отправка...' : 'Sending...';
         
         setTimeout(() => {
-            alert('Спасибо! Мы подобрали для вас 3 объекта. Менеджер свяжется с вами в ближайшее время.');
+            alert(currentLang === 'ru' 
+                ? 'Спасибо! Мы подобрали для вас 3 объекта. Менеджер свяжется с вами в ближайшее время.' 
+                : 'Thank you! We have selected 3 properties for you. A manager will contact you shortly.');
             btn.innerText = originalText;
             quizForm.reset();
             currentStep = 1;
@@ -140,9 +299,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
             
             // Close mobile menu if open
             if (nav.classList.contains('nav-active')) {
