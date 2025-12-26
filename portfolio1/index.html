@@ -6,6 +6,7 @@
     <title>Full-Stack Developer | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="background-animation"></div>
@@ -41,6 +42,14 @@
                 </div>
             </div>
         </header>
+
+        <!-- Analytics Section -->
+        <section class="analytics" style="margin-bottom: 80px;">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 40px;" data-i18n="analytics.title">Эффективность решений</h2>
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </section>
 
         <section id="projects" class="projects">
             <h2 class="section-title" data-i18n="projects.title">Избранные проекты</h2>

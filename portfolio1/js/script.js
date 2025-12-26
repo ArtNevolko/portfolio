@@ -18,7 +18,8 @@ const translations = {
         "modal.subtitle": "Заполните форму, и я свяжусь с вами в ближайшее время.",
         "form.name": "Ваше имя",
         "form.message": "Сообщение",
-        "form.submit": "Отправить"
+        "form.submit": "Отправить",
+        "analytics.title": "Эффективность решений"
     },
     ua: {
         "hero.title.start": "Створюю",
@@ -39,7 +40,8 @@ const translations = {
         "modal.subtitle": "Заповніть форму, і я зв'яжуся з вами найближчим часом.",
         "form.name": "Ваше ім'я",
         "form.message": "Повідомлення",
-        "form.submit": "Надіслати"
+        "form.submit": "Надіслати",
+        "analytics.title": "Ефективність рішень"
     },
     en: {
         "hero.title.start": "Building",
@@ -60,7 +62,8 @@ const translations = {
         "modal.subtitle": "Fill out the form and I will contact you shortly.",
         "form.name": "Your Name",
         "form.message": "Message",
-        "form.submit": "Send"
+        "form.submit": "Send",
+        "analytics.title": "Solution Efficiency"
     }
 };
 
@@ -92,6 +95,53 @@ document.addEventListener('DOMContentLoaded', () => {
             setLanguage(lang);
         });
     });
+
+    // --- Chart.js Implementation ---
+    const ctx = document.getElementById('performanceChart');
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Optimization Impact (%)',
+                    data: [12, 19, 35, 45, 60, 85],
+                    borderColor: '#38bdf8',
+                    backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true
+                }, {
+                    label: 'Load Time (ms)',
+                    data: [800, 750, 600, 450, 300, 150],
+                    borderColor: '#a855f7',
+                    backgroundColor: 'rgba(168, 85, 247, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: { color: '#fff' }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        ticks: { color: '#aaa' }
+                    },
+                    x: {
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        ticks: { color: '#aaa' }
+                    }
+                }
+            }
+        });
+    }
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

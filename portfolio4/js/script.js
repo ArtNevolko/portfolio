@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentLang === 'ua') sendingText = 'Відправка...';
 
         btn.innerText = sendingText;
-        
+
         setTimeout(() => {
             let alertText = 'Thank you! We have selected 3 properties for you. A manager will contact you shortly.';
             if (currentLang === 'ru') alertText = 'Спасибо! Мы подобрали для вас 3 объекта. Менеджер свяжется с вами в ближайшее время.';
