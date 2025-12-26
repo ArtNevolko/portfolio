@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- Translations ---
     const translations = {
         ru: {
@@ -101,6 +101,56 @@ document.addEventListener('DOMContentLoaded', () => {
             footer_privacy: "Privacy Policy",
             footer_terms: "Terms of Use",
             footer_copy: "© 2025 Dubai Estate. All rights reserved."
+        },
+        ua: {
+            nav_properties: "Об'єкти",
+            nav_mortgage: "Іпотека",
+            nav_quiz: "Підбір",
+            nav_contact: "Зв'язатися",
+            hero_title: "Інвестиції в майбутнє",
+            hero_subtitle: "Преміальна нерухомість в Дубаї з прибутковістю від 8% річних",
+            hero_btn_quiz: "Підібрати об'єкт",
+            hero_btn_catalog: "Дивитись каталог",
+            stat_tax: "Податок на доходи",
+            stat_ownership: "Право власності",
+            stat_visa: "Visa для інвесторів",
+            stat_roi: "Середня прибутковість",
+            prop_title: "Обрані проекти",
+            price_from_450: "від $450,000",
+            price_from_890: "від $890,000",
+            price_from_320: "від $320,000",
+            bed_1: "1 спальня",
+            bed_2: "2 спальні",
+            bed_3: "3 спальні",
+            btn_details: "Детальніше",
+            calc_title: "Іпотечний калькулятор",
+            calc_desc: "Розрахуйте приблизний щомісячний платіж для вашої інвестиції.",
+            calc_price: "Вартість нерухомості ($)",
+            calc_down_payment: "Початковий внесок (%)",
+            calc_term: "Термін (років)",
+            calc_rate: "Відсоткова ставка (%)",
+            calc_monthly: "Щомісячний платіж",
+            calc_loan_amount: "Сума кредиту:",
+            calc_down_amount: "Початковий внесок:",
+            calc_btn_approve: "Отримати схвалення",
+            quiz_title: "Підберіть ідеальний об'єкт",
+            quiz_step1_title: "Яка мета покупки?",
+            quiz_goal_invest: "Інвестиції (здача)",
+            quiz_goal_living: "Для життя",
+            quiz_goal_resale: "Перепродаж",
+            btn_next: "Далі",
+            quiz_step2_title: "Який бюджет ви розглядаєте?",
+            quiz_budget_low: "до $300k",
+            quiz_budget_mid: "$300k - $700k",
+            quiz_budget_high: "від $700k",
+            btn_prev: "Назад",
+            quiz_step3_title: "Залиште контакти для отримання підбірки",
+            ph_name: "Ваше ім'я",
+            ph_phone: "Телефон / WhatsApp",
+            btn_submit: "Отримати підбірку",
+            footer_privacy: "Політика конфіденційності",
+            footer_terms: "Умови використання",
+            footer_copy: "© 2025 Dubai Estate. Всі права захищені."
         }
     };
 
@@ -109,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setLanguage(lang) {
         currentLang = lang;
-        
+
         // Update Buttons
         langBtns.forEach(btn => {
             if (btn.dataset.lang === lang) {
@@ -155,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const downPaymentRange = document.getElementById('down-payment-range');
     const termInput = document.getElementById('loan-term');
     const rateInput = document.getElementById('interest-rate');
-    
+
     const monthlyPaymentDisplay = document.getElementById('monthly-payment');
     const loanAmountDisplay = document.getElementById('loan-amount');
     const downPaymentAmountDisplay = document.getElementById('down-payment-amount');
@@ -172,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const downPaymentAmount = price * (downPaymentPercent / 100);
         const loanAmount = price - downPaymentAmount;
-        
+
         const monthlyRate = annualRate / 100 / 12;
         const numberOfPayments = termYears * 12;
 
@@ -258,18 +308,19 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const btn = quizForm.querySelector('button[type="submit"]');
         const originalText = btn.innerText;
-        
-        btn.innerText = currentLang === 'ru' ? 'Отправка...' : 'Sending...';
+
+        let sendingText = 'Sending...';
+        if (currentLang === 'ru') sendingText = 'Отправка...';
+        if (currentLang === 'ua') sendingText = 'Відправка...';
+
+        btn.innerText = sendingText;
         
         setTimeout(() => {
-            alert(currentLang === 'ru' 
-                ? 'Спасибо! Мы подобрали для вас 3 объекта. Менеджер свяжется с вами в ближайшее время.' 
-                : 'Thank you! We have selected 3 properties for you. A manager will contact you shortly.');
-            btn.innerText = originalText;
-            quizForm.reset();
-            currentStep = 1;
-            updateStep(1);
-        }, 1500);
+            let alertText = 'Thank you! We have selected 3 properties for you. A manager will contact you shortly.';
+            if (currentLang === 'ru') alertText = 'Спасибо! Мы подобрали для вас 3 объекта. Менеджер свяжется с вами в ближайшее время.';
+            if (currentLang === 'ua') alertText = 'Дякуємо! Ми підібрали для вас 3 об\'єкти. Менеджер зв\'яжеться з вами найближчим часом.';
+
+            alert(alertText);
     });
 
 
@@ -281,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
     burger.addEventListener('click', () => {
         // Toggle Nav
         nav.classList.toggle('nav-active');
-        
+
         // Animate Links
         navLinks.forEach((link, index) => {
             if (link.style.animation) {
@@ -290,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
             }
         });
-        
+
         // Burger Animation
         burger.classList.toggle('toggle');
     });
@@ -301,14 +352,14 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 targetElement.scrollIntoView({
                     behavior: 'smooth'
                 });
             }
-            
+
             // Close mobile menu if open
             if (nav.classList.contains('nav-active')) {
                 nav.classList.remove('nav-active');
