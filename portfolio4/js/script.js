@@ -76,7 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
             footer_terms: "Условия использования",
             footer_copy: "© 2025 Nevolko Estate. All rights reserved.",
             modal_title: "Мы подобрали 3 варианта",
-            modal_subtitle: "Оставьте контакт, чтобы получить PDF-каталог"
+            modal_subtitle: "Оставьте контакт, чтобы получить PDF-каталог",
+            modal_title_approve: "Получить одобрение",
+            modal_subtitle_approve: "Менеджер свяжется для уточнения деталей ипотеки"
         },
         en: {
             nav_properties: "Properties",
@@ -128,7 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
             footer_terms: "Terms of Use",
             footer_copy: "© 2025 Nevolko Estate. All rights reserved.",
             modal_title: "We selected 3 options",
-            modal_subtitle: "Leave contact to get PDF catalog"
+            modal_subtitle: "Leave contact to get PDF catalog",
+            modal_title_approve: "Get Pre-Approval",
+            modal_subtitle_approve: "Manager will contact you for mortgage details"
         },
         ua: {
             nav_properties: "Об'єкти",
@@ -180,7 +184,9 @@ document.addEventListener('DOMContentLoaded', () => {
             footer_terms: "Умови використання",
             footer_copy: "© 2025 Nevolko Estate. Всі права захищені.",
             modal_title: "Ми підібрали 3 варіанти",
-            modal_subtitle: "Залиште контакт, щоб отримати PDF-каталог"
+            modal_subtitle: "Залиште контакт, щоб отримати PDF-каталог",
+            modal_title_approve: "Отримати схвалення",
+            modal_subtitle_approve: "Менеджер зв'яжеться для уточнення деталей іпотеки"
         }
     };
 
@@ -290,7 +296,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Calculator CTA
     if (btnGetApproval) {
         btnGetApproval.addEventListener('click', () => {
-            document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+            const modal = document.getElementById('quiz-modal');
+            const modalTitle = modal.querySelector('h3');
+            const modalSubtitle = modal.querySelector('p');
+            
+            // Update text for Approval context
+            if (translations[currentLang].modal_title_approve) {
+                modalTitle.textContent = translations[currentLang].modal_title_approve;
+                modalSubtitle.textContent = translations[currentLang].modal_subtitle_approve;
+                
+                // Add data attributes so language switch works if modal is open
+                modalTitle.setAttribute('data-i18n', 'modal_title_approve');
+                modalSubtitle.setAttribute('data-i18n', 'modal_subtitle_approve');
+            }
+            
+            modal.classList.add('show');
         });
     }
 
@@ -327,7 +347,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateStep(currentStep);
             } else {
                 // Open Modal on last step
-                document.getElementById('quiz-modal').classList.add('show');
+                const modal = document.getElementById('quiz-modal');
+                const modalTitle = modal.querySelector('h3');
+                const modalSubtitle = modal.querySelector('p');
+                
+                // Reset text for Quiz context
+                modalTitle.setAttribute('data-i18n', 'modal_title');
+                modalSubtitle.setAttribute('data-i18n', 'modal_subtitle');
+                modalTitle.textContent = translations[currentLang].modal_title;
+                modalSubtitle.textContent = translations[currentLang].modal_subtitle;
+
+                modal.classList.add('show');
             }
         });
     });
@@ -379,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.innerText = originalText;
                 modalForm.reset();
                 modal.classList.remove('show');
-                
+
                 // Reset Quiz
                 quizForm.reset();
                 currentStep = 1;
