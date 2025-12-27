@@ -1,5 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- Lenis Smooth Scroll ---
+    const lenis = new Lenis();
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    // --- Number Animation ---
+    function animateValue(obj, start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
     // --- Translations ---
     const translations = {
         ru: {
@@ -50,7 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
             btn_submit: "Получить подборку",
             footer_privacy: "Политика конфиденциальности",
             footer_terms: "Условия использования",
-            footer_copy: "© 2025 Nevolko Estate. All rights reserved."
+            footer_copy: "© 2025 Nevolko Estate. All rights reserved.",
+            modal_title: "Мы подобрали 3 варианта",
+            modal_subtitle: "Оставьте контакт, чтобы получить PDF-каталог"
         },
         en: {
             nav_properties: "Properties",
@@ -100,7 +126,9 @@ document.addEventListener('DOMContentLoaded', () => {
             btn_submit: "Get Selection",
             footer_privacy: "Privacy Policy",
             footer_terms: "Terms of Use",
-            footer_copy: "© 2025 Nevolko Estate. All rights reserved."
+            footer_copy: "© 2025 Nevolko Estate. All rights reserved.",
+            modal_title: "We selected 3 options",
+            modal_subtitle: "Leave contact to get PDF catalog"
         },
         ua: {
             nav_properties: "Об'єкти",
@@ -150,7 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
             btn_submit: "Отримати підбірку",
             footer_privacy: "Політика конфіденційності",
             footer_terms: "Умови використання",
-            footer_copy: "© 2025 Nevolko Estate. Всі права захищені."
+            footer_copy: "© 2025 Nevolko Estate. Всі права захищені.",
+            modal_title: "Ми підібрали 3 варіанти",
+            modal_subtitle: "Залиште контакт, щоб отримати PDF-каталог"
         }
     };
 
@@ -234,10 +264,14 @@ document.addEventListener('DOMContentLoaded', () => {
             monthlyPayment = (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) / (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
         }
 
-        // Update UI
-        monthlyPaymentDisplay.textContent = Math.round(monthlyPayment).toLocaleString();
-        loanAmountDisplay.textContent = Math.round(loanAmount).toLocaleString();
-        downPaymentAmountDisplay.textContent = Math.round(downPaymentAmount).toLocaleString();
+        // Update UI with Animation
+        const currentMonthly = parseInt(monthlyPaymentDisplay.textContent.replace(/\D/g, '')) || 0;
+        const currentLoan = parseInt(loanAmountDisplay.textContent.replace(/\D/g, '')) || 0;
+        const currentDown = parseInt(downPaymentAmountDisplay.textContent.replace(/\D/g, '')) || 0;
+
+        animateValue(monthlyPaymentDisplay, currentMonthly, Math.round(monthlyPayment), 300);
+        animateValue(loanAmountDisplay, currentLoan, Math.round(loanAmount), 300);
+        animateValue(downPaymentAmountDisplay, currentDown, Math.round(downPaymentAmount), 300);
     }
 
     // Event Listeners for Calculator
@@ -291,6 +325,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentStep < steps.length) {
                 currentStep++;
                 updateStep(currentStep);
+            } else {
+                // Open Modal on last step
+                document.getElementById('quiz-modal').classList.add('show');
             }
         });
     });
@@ -304,29 +341,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    quizForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const btn = quizForm.querySelector('button[type="submit"]');
-        const originalText = btn.innerText;
+    // Modal Logic
+    const modal = document.getElementById('quiz-modal');
+    const closeModal = document.querySelector('.close-modal');
+    const modalForm = document.getElementById('modal-form');
 
-        let sendingText = 'Sending...';
-        if (currentLang === 'ru') sendingText = 'Отправка...';
-        if (currentLang === 'ua') sendingText = 'Відправка...';
+    if (closeModal) {
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('show');
+        });
+    }
 
-        btn.innerText = sendingText;
-
-        setTimeout(() => {
-            let alertText = 'Thank you! We have selected 3 properties for you. A manager will contact you shortly.';
-            if (currentLang === 'ru') alertText = 'Спасибо! Мы подобрали для вас 3 объекта. Менеджер свяжется с вами в ближайшее время.';
-            if (currentLang === 'ua') alertText = 'Дякуємо! Ми підібрали для вас 3 об\'єкти. Менеджер зв\'яжеться з вами найближчим часом.';
-
-            alert(alertText);
-            btn.innerText = originalText;
-            quizForm.reset();
-            currentStep = 1;
-            updateStep(1);
-        }, 2000);
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('show');
+        }
     });
+
+    if (modalForm) {
+        modalForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = modalForm.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+
+            let sendingText = 'Sending...';
+            if (currentLang === 'ru') sendingText = 'Отправка...';
+            if (currentLang === 'ua') sendingText = 'Відправка...';
+
+            btn.innerText = sendingText;
+
+            setTimeout(() => {
+                let alertText = 'Thank you! We have selected 3 properties for you. A manager will contact you shortly.';
+                if (currentLang === 'ru') alertText = 'Спасибо! Мы подобрали для вас 3 объекта. Менеджер свяжется с вами в ближайшее время.';
+                if (currentLang === 'ua') alertText = 'Дякуємо! Ми підібрали для вас 3 об\'єкти. Менеджер зв\'яжеться з вами найближчим часом.';
+
+                alert(alertText);
+                btn.innerText = originalText;
+                modalForm.reset();
+                modal.classList.remove('show');
+                
+                // Reset Quiz
+                quizForm.reset();
+                currentStep = 1;
+                updateStep(1);
+            }, 2000);
+        });
+    }
 
 
     // --- Mobile Menu ---

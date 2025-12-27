@@ -226,28 +226,34 @@
                         </div>
                         <div class="step-buttons">
                             <button type="button" class="btn-outline prev-step" data-i18n="btn_prev">Назад</button>
-                            <button type="button" class="btn-gold next-step" data-i18n="btn_next">Далее</button>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="quiz-step" data-step="3">
-                        <h3 data-i18n="quiz_step3_title">Оставьте контакты для получения подборки</h3>
-                        <div class="form-group">
-                            <input type="text" placeholder="Ваше имя" data-i18n-placeholder="ph_name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="Телефон / WhatsApp" data-i18n-placeholder="ph_phone" required>
-                        </div>
-                        <div class="step-buttons">
-                            <button type="button" class="btn-outline prev-step" data-i18n="btn_prev">Назад</button>
-                            <button type="submit" class="btn-gold" data-i18n="btn_submit">Получить подборку</button>
+                            <button type="button" class="btn-gold next-step" id="quiz-finish-btn" data-i18n="btn_next">Далее</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </section>
+
+    <!-- Quiz Modal -->
+    <div id="quiz-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <i class="fas fa-check-circle"></i>
+                <h3 data-i18n="modal_title">Мы подобрали 3 варианта</h3>
+                <p data-i18n="modal_subtitle">Оставьте контакт, чтобы получить PDF-каталог</p>
+            </div>
+            <form id="modal-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Ваше имя" data-i18n-placeholder="ph_name" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Телефон / WhatsApp" data-i18n-placeholder="ph_phone" required>
+                </div>
+                <button type="submit" class="btn-gold full-width" data-i18n="btn_submit">Получить подборку</button>
+            </form>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer id="contact" class="footer bg-dark">
@@ -270,6 +276,7 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

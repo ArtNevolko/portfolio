@@ -612,3 +612,104 @@ input[type="range"] {
     .burger { display: block; cursor: pointer; }
     .burger div { width: 25px; height: 3px; background: var(--white); margin: 5px; }
 }
+/* Lenis Smooth Scroll */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-modal:hover {
+    color: var(--primary-gold);
+}
+
+.modal-header i {
+    font-size: 48px;
+    color: var(--primary-gold);
+    margin-bottom: 20px;
+}
+
+.modal-header h3 {
+    margin-bottom: 10px;
+    color: var(--dark-bg);
+}
+
+.modal-header p {
+    color: var(--text-gray);
+    margin-bottom: 30px;
+}
+
+#modal-form .form-group {
+    margin-bottom: 20px;
+}
+
+#modal-form input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+#modal-form input:focus {
+    outline: none;
+    border-color: var(--primary-gold);
+}
