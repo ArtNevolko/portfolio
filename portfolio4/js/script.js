@@ -299,17 +299,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const modal = document.getElementById('quiz-modal');
             const modalTitle = modal.querySelector('h3');
             const modalSubtitle = modal.querySelector('p');
-            
+
             // Update text for Approval context
             if (translations[currentLang].modal_title_approve) {
                 modalTitle.textContent = translations[currentLang].modal_title_approve;
                 modalSubtitle.textContent = translations[currentLang].modal_subtitle_approve;
-                
+
                 // Add data attributes so language switch works if modal is open
                 modalTitle.setAttribute('data-i18n', 'modal_title_approve');
                 modalSubtitle.setAttribute('data-i18n', 'modal_subtitle_approve');
             }
-            
+
             modal.classList.add('show');
         });
     }
@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const modal = document.getElementById('quiz-modal');
                 const modalTitle = modal.querySelector('h3');
                 const modalSubtitle = modal.querySelector('p');
-                
+
                 // Reset text for Quiz context
                 modalTitle.setAttribute('data-i18n', 'modal_title');
                 modalSubtitle.setAttribute('data-i18n', 'modal_subtitle');

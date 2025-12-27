@@ -609,22 +609,22 @@ input[type="range"] {
     .section-padding { padding: 50px 0; }
     .hero h1 { font-size: 2.2rem; }
     .hero p { font-size: 1rem; }
-    
-    .calc-wrapper { 
-        grid-template-columns: 1fr; 
+
+    .calc-wrapper {
+        grid-template-columns: 1fr;
         padding: 30px 20px;
         gap: 30px;
     }
-    
+
     .quiz-container {
         padding: 30px 20px;
     }
-    
+
     .options-grid {
         grid-template-columns: 1fr; /* Stack options vertically on mobile */
         gap: 15px;
     }
-    
+
     .option-card {
         padding: 20px;
         display: flex;
@@ -632,13 +632,13 @@ input[type="range"] {
         text-align: left;
         gap: 20px;
     }
-    
+
     .option-icon {
         margin-bottom: 0;
         font-size: 1.5rem;
     }
 
-    .nav-links { 
+    .nav-links {
         position: absolute;
         right: 0px;
         height: 92vh;
@@ -652,37 +652,37 @@ input[type="range"] {
         transition: transform 0.5s ease-in;
         z-index: 999;
     }
-    
+
     .nav-links li {
         opacity: 0;
     }
-    
+
     .burger { display: block; cursor: pointer; }
     .burger div { width: 25px; height: 3px; background: var(--white); margin: 5px; transition: all 0.3s ease; }
-    
+
     .nav-active {
         transform: translateX(0%);
     }
-    
+
     .footer-content {
         flex-direction: column;
         gap: 20px;
         text-align: center;
     }
-    
+
     .footer-links {
         flex-direction: column;
         gap: 15px;
     }
-    
+
     .socials {
         margin-left: 0;
     }
-    
+
     .socials a {
         margin: 0 10px;
     }
-    
+
     .modal-content {
         padding: 30px 20px;
         width: 95%;
@@ -798,6 +798,8 @@ html.lenis {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-family: inherit;
+    color: #333;
+    background-color: #fff;
 }
 
 #modal-form input:focus {
